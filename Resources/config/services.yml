@@ -1,0 +1,12 @@
+services:
+    mdespeuilles.event.locale_rewrite_listener:
+        class: Mdespeuilles\LanguageBundle\EventListener\LocaleRewriteListener
+        arguments: ['@service_container', "@router", "%kernel.default_locale%", "%locale_supported%"]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.entity.language:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - Mdespeuilles\LanguageBundle\Entity\Language
