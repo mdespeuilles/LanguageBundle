@@ -1,3 +1,0 @@
-mdespeuilles_language_homepage:
-    path:     /
-    defaults: { _controller: MdespeuillesLanguageBundle:Default:index }

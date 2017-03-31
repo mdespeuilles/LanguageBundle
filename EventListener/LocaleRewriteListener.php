@@ -62,9 +62,12 @@ class LocaleRewriteListener implements EventSubscriberInterface
 
     public function onKernelRequest(GetResponseEvent $event)
     {
+        if (count(explode("|", $this->supportedLocales)) <= 1) {
+            return;
+        }
+        
         $request = $event->getRequest();
         $path = $request->getPathInfo();
-
         if ($path == "/") {
             $locale = $request->getPreferredLanguage(explode("|", $this->supportedLocales));
             //dump($locale);

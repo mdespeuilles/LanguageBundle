@@ -5,7 +5,7 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    app.entity.language:
+    mdespeuilles.entity.language:
         class: Doctrine\ORM\EntityRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments:
